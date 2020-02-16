@@ -17,7 +17,6 @@ public class JsonReciever {
         query_field = query_field.replace(" ", "%20");
         CloseableHttpClient httpClient = HttpClients.createDefault();
         try {
-
             HttpGet request = new HttpGet(URI + "q=" + query + ":" + query_field + "&" + "api_key=" + api_key + "&" + "p=100"); //p = page length
             CloseableHttpResponse response = httpClient.execute(request);
             try {
@@ -45,7 +44,7 @@ public class JsonReciever {
     //http://scigraph.springernature.com/person.011355766010.27.json
     public static JSONObject getTripletsFropmSpringer(String id) throws IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        System.out.println("http://scigraph.springernature.com/" + id.substring(3, id.length())+".json");
+       // System.out.println("http://scigraph.springernature.com/" + id.substring(3, id.length())+".json");
         try {
             HttpGet request = new HttpGet("http://scigraph.springernature.com/" + id.substring(3, id.length())+".json"); //p = page length
             CloseableHttpResponse response = httpClient.execute(request);

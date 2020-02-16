@@ -10,9 +10,7 @@ public class JsonParser {
 
     public static ArrayList<String> getSubjectId(JSONObject jsonObject, String givenName, String familyName) { //получатель id по фамилии и имени автора
         ArrayList <String> id = new ArrayList<String>();
-
         JSONArray records = jsonObject.getJSONArray("records");
-
         ArrayList<JSONObject> jsonLD = new ArrayList<JSONObject>();
         ArrayList<JSONArray> authors = new ArrayList<JSONArray>();
 
@@ -28,11 +26,9 @@ public class JsonParser {
                if ((authors.get(i).getJSONObject(j).get("givenName").toString().equals(givenName))&& (authors.get(i).getJSONObject(j).get("familyName").toString().equals(familyName))){
                    try {
                        id.add(authors.get(i).getJSONObject(j).get("id").toString());
-
                    } catch (Exception e){
 
                    }
-
                }
            }
        }
