@@ -35,6 +35,17 @@ public class RDFmolecule {
         return predAndObj.get(index);
     }
 
+    public Object getPredicate(int index){
+        return this.getPair(index).getValue0();
+    }
+
+    public Object getObject(int index){
+        return this.getPair(index).getValue1();
+    }
+    public int getSize(){
+        return predAndObj.size();
+    }
+
     public void addPairsFromJson(JSONObject JSON){
         Iterator<String> keys = JSON.keys();
         while (keys.hasNext()){

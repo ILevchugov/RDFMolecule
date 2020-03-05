@@ -29,6 +29,7 @@ public class test {
         Zinaida.addPairsFromJson(JsonReciever.getTripletsFropmSpringer(id1.get(0)));
         Zinaida.show();
         System.out.println(Zinaida.getPair(2));
+        System.out.println(Zinaida.getPredicate(2));
 
 
     }
