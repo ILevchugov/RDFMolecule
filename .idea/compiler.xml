@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="RDF-Molecule" />
         <module name="RDFMolecule" />
+        <module name="RDF-Molecule" />
       </profile>
     </annotationProcessing>
   </component>

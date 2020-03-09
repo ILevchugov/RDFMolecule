@@ -1,14 +1,11 @@
 import JSONReciever.JsonReciever;
-import RDFMolecule.RDFmolecule;
+import RDFMolecule.RDFMolecule;
 
 import JSONParser.JsonParser;
-import org.javatuples.Pair;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class test {
     public static void main(String[] args) throws IOException {
@@ -20,16 +17,17 @@ public class test {
         ArrayList <String> id = JsonParser.getSubjectId(myObject,"Alexander", "Marchuk");
         System.out.println(id);
         System.out.println(JsonReciever.getTripletsFropmSpringer(id.get(1)));
-        RDFmolecule Alex = new RDFmolecule("Alexander Marchuk");
+        RDFMolecule Alex = new RDFMolecule("Alexander Marchuk");
         Alex.addPairsFromJson(JsonReciever.getTripletsFropmSpringer(id.get(1)));
-        Alex.show();
-        RDFmolecule Zinaida = new RDFmolecule("Zinaida");
+        System.out.println(Alex);
+        RDFMolecule Zinaida = new RDFMolecule("Zinaida");
         JSONObject myObject1 = JsonReciever.getJsonFromSpringer( "1c79096220d1b24680d951e4474440d5", "name", "Zinaida Apanovich");
         ArrayList <String> id1 = JsonParser.getSubjectId(myObject1,"Zinaida", "Apanovich");
         Zinaida.addPairsFromJson(JsonReciever.getTripletsFropmSpringer(id1.get(0)));
-        Zinaida.show();
-        System.out.println(Zinaida.getPair(2));
-        System.out.println(Zinaida.getPredicate(2));
+        System.out.println(Zinaida);
+        System.out.println(Zinaida.hashCode());
+        //System.out.println(Zinaida.getPredicate(1));
+      //  System.out.println(Zinaida.getPredicate(2));
 
 
     }

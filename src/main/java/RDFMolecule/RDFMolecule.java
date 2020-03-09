@@ -1,6 +1,8 @@
 package RDFMolecule;
 
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.javatuples.Pair;
 import org.json.JSONObject;
 
@@ -8,17 +10,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class RDFmolecule {
+@EqualsAndHashCode
+@ToString
+public class RDFMolecule {
 
     private String subject; //субъект
     private List<Pair> predAndObj; //множество пар предикат объект
 
-    public RDFmolecule(String subject){
+    public RDFMolecule(String subject){
         this.subject = subject;
         predAndObj = new ArrayList<Pair>();
     }
 
-    public RDFmolecule(String subject, List<Pair> predAndObj){
+    public RDFMolecule(String subject, List<Pair> predAndObj){
         this.subject = subject;
         this.predAndObj = predAndObj;
     }
@@ -53,12 +57,6 @@ public class RDFmolecule {
             Pair pair = new Pair(key, JSON.get(key));
             this.addPair(pair);
         }
-    }
-
-    public void show(){
-        System.out.println("Subject : " + subject);
-        System.out.println(predAndObj);
-
     }
 
 }

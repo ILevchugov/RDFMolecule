@@ -14,7 +14,7 @@ public class JsonParser {
         ArrayList<JSONObject> jsonLD = new ArrayList<JSONObject>();
         ArrayList<JSONArray> authors = new ArrayList<JSONArray>();
 
-        for (int i =0; i < records.length(); i++){
+        for (int i = 0; i < records.length(); i++){
             if(records.getJSONObject(i).get("jsonld") instanceof JSONObject ) {
                 jsonLD.add(records.getJSONObject(i).getJSONObject("jsonld"));
                 authors.add(records.getJSONObject(i).getJSONObject("jsonld").getJSONArray("author"));
