@@ -15,19 +15,19 @@ import java.util.List;
 public class RDFMolecule {
 
     private String subject; //субъект
-    private List<Pair> predAndObj; //множество пар предикат объект
+    private List<Pair<String, String>> predAndObj; //множество пар предикат объект
 
     public RDFMolecule(String subject){
         this.subject = subject;
-        predAndObj = new ArrayList<Pair>();
+        predAndObj = new ArrayList<>();
     }
 
-    public RDFMolecule(String subject, List<Pair> predAndObj){
+    public RDFMolecule(String subject, List<Pair<String, String>> predAndObj){
         this.subject = subject;
         this.predAndObj = predAndObj;
     }
 
-    public void addPair(Pair pair){
+    public void addPair(Pair<String, String> pair){
         predAndObj.add(pair);
     }
 
@@ -35,7 +35,7 @@ public class RDFMolecule {
         predAndObj.remove(index);
     }
 
-    public Pair getPair(int index){
+    public Pair<String, String> getPair(int index){
         return predAndObj.get(index);
     }
 
@@ -54,7 +54,7 @@ public class RDFMolecule {
         Iterator<String> keys = JSON.keys();
         while (keys.hasNext()){
             String key = keys.next();
-            Pair pair = new Pair(key, JSON.get(key));
+            Pair<String, String> pair = new Pair<>(key, JSON.get(key).toString());
             this.addPair(pair);
         }
     }
