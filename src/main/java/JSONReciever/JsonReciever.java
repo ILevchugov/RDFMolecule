@@ -11,60 +11,42 @@ import java.io.IOException;
 
 public class JsonReciever {
 
-    public static JSONObject getJsonFromSpringer(String api_key, String query, String query_field) throws IOException {
+    public static JSONObject getJsonFromSpringer(String apiKey, String queryType, String queryField){
 
         final String URI = "http://api.springernature.com/meta/v2/jsonld?";
-        query_field = query_field.replace(" ", "%20");
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        try {
-            HttpGet request = new HttpGet(URI + "q=" + query + ":" + query_field + "&" + "api_key=" + api_key + "&" + "p=100"); //p = page length
-            CloseableHttpResponse response = httpClient.execute(request);
-            try {
+        queryField = queryField.replace(" ", "%20");
+        HttpGet request = new HttpGet(URI + "q=" + queryType + ":" + queryField + "&" + "api_key=" + apiKey + "&" + "p=100"); //p = page length
+
+
+        try (CloseableHttpClient httpClient = HttpClients.createDefault();
+                 CloseableHttpResponse response = httpClient.execute(request)) {
                 HttpEntity entity = response.getEntity();
                 if (entity != null) {
                     String result = EntityUtils.toString(entity);
-                    try {
-                        JSONObject jsonObject = new JSONObject(result);
-                        return jsonObject;
-                    } catch (Exception e) {
-                        System.out.println(e);
-                    }
+                        return new JSONObject(result);
                 }
-
-            } finally {
-                response.close();
             }
-        } finally {
-            httpClient.close();
+        catch (IOException e){
+            System.out.println("Wrong http connection");
         }
         return new JSONObject();
     }
 
 
     //http://scigraph.springernature.com/person.011355766010.27.json
-    public static JSONObject getTripletsFropmSpringer(String id) throws IOException {
-        CloseableHttpClient httpClient = HttpClients.createDefault();
+    public static JSONObject getTripletsFropmSpringer(String id) {
+        HttpGet request = new HttpGet("http://scigraph.springernature.com/" + id.substring(3)+".json"); //p = page length
        // System.out.println("http://scigraph.springernature.com/" + id.substring(3, id.length())+".json");
-        try {
-            HttpGet request = new HttpGet("http://scigraph.springernature.com/" + id.substring(3, id.length())+".json"); //p = page length
-            CloseableHttpResponse response = httpClient.execute(request);
-            try {
+        try (CloseableHttpClient httpClient = HttpClients.createDefault();
+                CloseableHttpResponse response = httpClient.execute(request)){
                 HttpEntity entity = response.getEntity();
                 if (entity != null) {
                     String result = EntityUtils.toString(entity);
-                    try {
-                        JSONObject jsonObject = new JSONObject(result);
-                        return jsonObject;
-                    } catch (Exception e) {
-                        System.out.println(e);
-                    }
+                        return new JSONObject(result);
                 }
-
-            } finally {
-                response.close();
-            }
-        } finally {
-            httpClient.close();
+        }
+        catch (IOException e){
+            System.out.println("Wrong http connection");
         }
         return new JSONObject();
     }
