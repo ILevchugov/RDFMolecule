@@ -4,6 +4,7 @@ package RDFMolecule;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.javatuples.Pair;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -39,18 +40,22 @@ public class RDFMolecule {
         return predAndObj.get(index);
     }
 
-    public Object getPredicate(int index){
+    public String getSubject(){
+        return subject;
+    }
+    public String getPredicate(int index){
         return this.getPair(index).getValue0();
     }
 
-    public Object getObject(int index){
+    public String getObject(int index){
         return this.getPair(index).getValue1();
     }
+
     public int getSize(){
         return predAndObj.size();
     }
 
-    public void addPairsFromJson(JSONObject JSON){
+    public void addPairsFromJson(@NotNull JSONObject JSON){
         Iterator<String> keys = JSON.keys();
         while (keys.hasNext()){
             String key = keys.next();
