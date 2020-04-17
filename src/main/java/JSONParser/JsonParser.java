@@ -23,7 +23,6 @@ public class JsonParser {
         }
         for (JSONArray author : authors) {
             for (int j = 0; j < author.length(); j++) {
-
                 if ((author.getJSONObject(j).get("givenName").toString().equals(givenName)) && (author.getJSONObject(j).get("familyName").toString().equals(familyName))) {
                     try {
                         id.add(author.getJSONObject(j).get("id").toString());

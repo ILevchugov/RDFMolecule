@@ -173,7 +173,7 @@ public class Transliterator {
         letters_vars.put("т", LETTERS_TRANSLITE_VARS.get(52));
         letters_vars.put("у", LETTERS_TRANSLITE_VARS.get(53));
         letters_vars.put("ф", LETTERS_TRANSLITE_VARS.get(54));
-        letters_vars.put("x", LETTERS_TRANSLITE_VARS.get(55));
+        letters_vars.put("х", LETTERS_TRANSLITE_VARS.get(55));
         letters_vars.put("ц", LETTERS_TRANSLITE_VARS.get(56));
         letters_vars.put("ч", LETTERS_TRANSLITE_VARS.get(57));
         letters_vars.put("ш", LETTERS_TRANSLITE_VARS.get(58));
@@ -189,5 +189,12 @@ public class Transliterator {
         letters_vars.put("ий", LETTERS_TRANSLITE_VARS.get(68));
     }
 
+    public static void main(String[] args) {
+        ArrayList<StringBuilder> names = transliterate("Иван Левчугов");
 
+        for (StringBuilder name: names) {
+            System.out.println(name);
+        }
+        System.out.println(names.size());
+    }
 }

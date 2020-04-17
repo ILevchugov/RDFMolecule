@@ -1,8 +1,8 @@
 package RDFMolecule;
 
-
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
 import org.javatuples.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
@@ -15,53 +15,53 @@ import java.util.List;
 @ToString
 public class RDFMolecule {
 
-    private String subject; //субъект
-    private List<Pair<String, String>> predAndObj; //множество пар предикат объект
+    private final String subject; //субъект
+    private final List<Pair<String, String>> predAndObj; //множество пар предикат объект
 
-    public RDFMolecule(String subject){
+    public RDFMolecule(String subject) {
         this.subject = subject;
         predAndObj = new ArrayList<>();
     }
 
-    public RDFMolecule(String subject, List<Pair<String, String>> predAndObj){
+    public RDFMolecule(String subject, List<Pair<String, String>> predAndObj) {
         this.subject = subject;
         this.predAndObj = predAndObj;
     }
 
-    public void addPair(Pair<String, String> pair){
+    public void addPair(Pair<String, String> pair) {
         predAndObj.add(pair);
     }
 
-    public void remove(int index){
+    public void remove(int index) {
         predAndObj.remove(index);
     }
 
-    public Pair<String, String> getPair(int index){
+    public Pair<String, String> getPair(int index) {
         return predAndObj.get(index);
     }
 
-    public String getSubject(){
+    public String getSubject() {
         return subject;
     }
-    public String getPredicate(int index){
+
+    public String getPredicate(int index) {
         return this.getPair(index).getValue0();
     }
 
-    public String getObject(int index){
+    public String getObject(int index) {
         return this.getPair(index).getValue1();
     }
 
-    public int getSize(){
+    public int getSize() {
         return predAndObj.size();
     }
 
-    public void addPairsFromJson(@NotNull JSONObject JSON){
+    public void addPairsFromJson(@NotNull JSONObject JSON) {
         Iterator<String> keys = JSON.keys();
-        while (keys.hasNext()){
+        while (keys.hasNext()) {
             String key = keys.next();
             Pair<String, String> pair = new Pair<>(key, JSON.get(key).toString());
             this.addPair(pair);
         }
     }
-
 }
