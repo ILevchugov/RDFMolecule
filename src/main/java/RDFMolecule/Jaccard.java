@@ -13,9 +13,9 @@ public class Jaccard {
     @Getter
     private double similarityMeasure;
     @Getter
-    private Set<Pair<String, String>> intersectionSet;
+    private Set<Pair<String, Object>> intersectionSet;
     @Getter
-    private Set<Pair<String, String>> unionSet;
+    private Set<Pair<String, Object>> unionSet;
 
     public Jaccard(RDFMolecule A, RDFMolecule B) {
         this.A = A;

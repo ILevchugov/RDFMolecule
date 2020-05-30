@@ -2,9 +2,7 @@ package RDFMolecule;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
 import org.javatuples.Pair;
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -16,28 +14,28 @@ import java.util.List;
 public class RDFMolecule {
 
     private final String subject; //субъект
-    private final List<Pair<String, String>> predAndObj; //множество пар предикат объект
+    private final List<Pair<String, Object>> predAndObjects; //множество пар предикат объект
 
     public RDFMolecule(String subject) {
         this.subject = subject;
-        predAndObj = new ArrayList<>();
+        predAndObjects = new ArrayList<>();
     }
 
-    public RDFMolecule(String subject, List<Pair<String, String>> predAndObj) {
+    public RDFMolecule(String subject, List<Pair<String, Object>> predAndObj) {
         this.subject = subject;
-        this.predAndObj = predAndObj;
+        this.predAndObjects = predAndObj;
     }
 
-    public void addPair(Pair<String, String> pair) {
-        predAndObj.add(pair);
+    public void addPair(Pair<String, Object> pair) {
+        predAndObjects.add(pair);
     }
 
     public void remove(int index) {
-        predAndObj.remove(index);
+        predAndObjects.remove(index);
     }
 
-    public Pair<String, String> getPair(int index) {
-        return predAndObj.get(index);
+    public Pair<String, Object> getPair(int index) {
+        return predAndObjects.get(index);
     }
 
     public String getSubject() {
@@ -48,20 +46,47 @@ public class RDFMolecule {
         return this.getPair(index).getValue0();
     }
 
-    public String getObject(int index) {
+    public Object getObject(int index) {
         return this.getPair(index).getValue1();
     }
 
-    public int getSize() {
-        return predAndObj.size();
+    public ArrayList<Object> getObjects(String predicate) {
+        ArrayList<Object> objects = new ArrayList<>();
+        for (Pair<String, Object> predAndObj : predAndObjects) {
+            if (predAndObj.getValue0().equals(predicate)) {
+                objects.add(predAndObj.getValue1());
+            }
+        }
+        return objects;
     }
 
-    public void addPairsFromJson(@NotNull JSONObject JSON) {
+    public int getSize() {
+        return predAndObjects.size();
+    }
+
+    public void addPairsFromJson(JSONObject JSON) {
         Iterator<String> keys = JSON.keys();
         while (keys.hasNext()) {
             String key = keys.next();
-            Pair<String, String> pair = new Pair<>(key, JSON.get(key).toString());
+            Pair<String, Object> pair = new Pair<>(key, JSON.get(key).toString());
             this.addPair(pair);
         }
     }
+
+    public void show() {
+        System.out.println("RDF molecule: " + subject);
+        for (Pair<String, Object> predAndObj : predAndObjects) {
+            System.out.println("predicate: " + "<" + predAndObj.getValue0() + "> " + " object: " + "<" + predAndObj.getValue1() + ">");
+        }
+    }
+
+    public String getDescription() {
+        StringBuilder result = new StringBuilder();
+        for (Pair<String, Object> predAndObj : predAndObjects) {
+            result.append("predicate: " + "<" + predAndObj.getValue0() + "> " + " object: " + "<" + predAndObj.getValue1() + ">" + System.lineSeparator());
+        }
+        return "RDF molecule: " + subject + System.lineSeparator() + result;
+
+    }
 }
+

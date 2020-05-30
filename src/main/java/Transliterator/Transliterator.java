@@ -1,15 +1,9 @@
 package Transliterator;
 
-import org.apache.tomcat.util.bcel.classfile.ConstantUtf8;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.*;
 
 public class Transliterator {
-
     private static final ArrayList<String[]> LETTERS_TRANSLITE_VARS;
-
 
     public static ArrayList<StringBuilder> transliterate(String name) {
 
@@ -19,7 +13,6 @@ public class Transliterator {
         for (int i = 0; i < name.length(); i++) {
 
             String[] letters = letters_vars.get(Character.toString(name.charAt(i)));
-            System.out.println(letters[0]);
 
             if (letters.length == 1) {
                 for (StringBuilder transName : transliterateNames) {
@@ -190,7 +183,7 @@ public class Transliterator {
     }
 
     public static void main(String[] args) {
-        ArrayList<StringBuilder> names = transliterate("Иван Левчугов");
+        ArrayList<StringBuilder> names = transliterate("Апанович Зинаида");
 
         for (StringBuilder name: names) {
             System.out.println(name);
