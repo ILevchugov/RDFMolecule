@@ -1,9 +1,5 @@
 package Translator;
 
-
-import com.gtranslate.Language;
-import com.gtranslate.Translator;
-
 import javax.net.ssl.HttpsURLConnection;
 import java.io.DataOutputStream;
 import java.io.IOException;
