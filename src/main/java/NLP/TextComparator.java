@@ -44,10 +44,4 @@ public class TextComparator {
 
         return treshold;
     }
-
-    public static void main(String[] args) throws IOException {
-        String textB = YandexTranslator.translate("ru", "ТЕХНОЛОГИЯ АНАЛИЗА ДОКУМЕНТОВ ИНФОРМАЦИОННЫХ СИСТЕМАХ ПОДДЕРЖКИ НАУЧНОЙ И ПРОИЗВОДСТВЕННОЙ ДЕЯТЕЛЬНОСТИ");
-        System.out.println(compare("Document analysis technology in information systems for supporting research and commercial activities", textB));
-
-    }
 }

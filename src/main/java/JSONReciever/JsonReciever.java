@@ -77,7 +77,7 @@ public class JsonReciever {
         return new JSONObject();
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         JSONObject jsonObject = getJsonFromSpringer("1c79096220d1b24680d951e4474440d5",  "name", 1, "Apanovich Zinaida");
        // System.out.println(jsonObject.getJSONArray("records").getJSONObject(0));
         RDFMolecule article = new RDFMolecule("Article");
@@ -89,6 +89,8 @@ public class JsonReciever {
         System.out.println(Marchuk);
         System.out.println(MarchuksArticle.getObjects("title").get(0));
     }
+
+    */
 }
 
 

@@ -182,7 +182,7 @@ public class Transliterator {
         letters_vars.put("ий", LETTERS_TRANSLITE_VARS.get(68));
     }
 
-    public static void main(String[] args) {
+    public static void testTransliterator() {
         ArrayList<StringBuilder> names = transliterate("Апанович Зинаида");
 
         for (StringBuilder name: names) {

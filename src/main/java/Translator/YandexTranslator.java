@@ -9,9 +9,6 @@ import java.net.URLEncoder;
 
 public class YandexTranslator {
     private static int i = 0;
-    public static void main(String[] args) throws IOException {
-        System.out.println(translate("en", "Привет"));
-    }
 
     public static String translate(String lang, String input) throws IOException {
         String urlStr = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20200518T035438Z.ca4516a2673cefe1.72f780d4c68cc0c8dd44b5b857925e2324c38d24";

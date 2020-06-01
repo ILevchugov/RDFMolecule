@@ -32,7 +32,4 @@ public class StopWordsRemover {
         return result.toString();
     }
 
-    public static void main(String[] args) {
-        System.out.println(removeStopWords("i love Y"));
-    }
 }

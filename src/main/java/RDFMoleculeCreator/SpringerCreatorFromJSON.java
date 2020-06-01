@@ -145,7 +145,7 @@ public class SpringerCreatorFromJSON {
         return false;
     }
 
-    public static void main(String[] args) {
+    public static void test_creator() {
         SpringerCreatorFromJSON springerCreatorFromJSON = new SpringerCreatorFromJSON("1c79096220d1b24680d951e4474440d5", "name");
         RDFMolecule SpringerRdfMolecule = springerCreatorFromJSON.createMoleculesByNameOnRus("Апанович", "Зинаида", "Евгеньевич");
         // ArrayList<RDFMolecule> apanovichMolecules = springerCreatorFromJSON.createMoleculesByNameOnRus("Загорулько Юрий ");

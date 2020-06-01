@@ -23,7 +23,7 @@ public class ConsoleApp {
                     "*");
 
 
-    public static void main(String[] args) throws IOException {
+   /* public static void main(String[] args) throws IOException {
         System.out.println("введите фамилию");
         Scanner sc = new Scanner(System.in);
         String familyName = sc.nextLine();
@@ -51,7 +51,7 @@ public class ConsoleApp {
         System.out.println("Количество статей из SpringerLink : " + unrecognizedArticles.size());
         /*
         сравнение по предикату прямое, работает ток если на одном языке
-         */
+
         for (int j = 0; j < ArticlesFromElibrary.size(); j++) {
             for (int i = 0; i < ArticlesFromSpringer.size(); i++) {
                 RDFMolecule sprArticle = (RDFMolecule) ArticlesFromSpringer.get(i);
@@ -95,5 +95,5 @@ public class ConsoleApp {
             // System.out.println(rdfMolecule.getObjects("title"));
             // System.out.println(rdfMolecule.getObjects("creators"));
         }
-    }
+    }*/
 }
