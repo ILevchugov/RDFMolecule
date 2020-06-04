@@ -66,7 +66,7 @@ public class SwingView {
             try {
                 Set<RDFMolecule> articles = moleculesComparator.findAndCompare(text);
                 RDFMoleculeInfo.setText(null);
-                RDFMoleculeInfo.append("Распознано " + articles.size() + "статей");
+                RDFMoleculeInfo.append("Распознано " + articles.size() + "статей"  + System.lineSeparator());
                 for (RDFMolecule article : articles) {
                     RDFMoleculeInfo.append(article.getDescription());
                 }
